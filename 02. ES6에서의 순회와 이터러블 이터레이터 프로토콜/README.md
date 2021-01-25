@@ -56,7 +56,7 @@ console.log(map[Symbol.iterator]); ƒ entries() { [native code] }
 이를 통해 for of문이 Symbol.iterator을 통해 순회하지 않을까? 라는 생각을 해볼 수 있다.
 
 ### 이터러블, 이터레이터 프로토콜
-- 이터러블: 이터레이터를 리턴하는 [Symbol.iterator]()를 가진 값(Symbol.iterator 메소드를 가지고 있는 객체)
+- 이터러블: 이터레이터를 리턴하는 Symbol.iterator()를 가진 값(Symbol.iterator 메소드를 가지고 있는 객체)
 - 이터레이터 : { value, done } 객체를 리턴하는 next()를 가진 값(Symbol.iterator 메소드를 실행한 값)
 - 이터러블/이터레이터 프로토콜: 이터러블을 for...of, 전개 연산자 등과 함께 동작하도록 한 규약
 ```
@@ -133,7 +133,7 @@ for (const value of iterator) {
 }
 ```
 왜 이런 오류가 발생할까?
-for of문은 [Symbol.iterator]()의 next 메소드를 실행하여 그 결과인 value를 return하는 것인데<br>
+for of문은 Symbol.iterator()의 next 메소드를 실행하여 그 결과인 value를 return하는 것인데<br>
 작성한 코드대로 보면 iterator은 next 메소드만 가지고 있다.<br>
 따라서 이터러블이 아니라고 판단해 오류가 발생하는 것이다.
 
@@ -168,10 +168,10 @@ for (const value of iterator) {
 const arr = [1, 2, 3];
 console.log([...arr, ...[4, 5]]) // [1, 2, 3, 4, 5]
 ```
-여기에서도 역시 [Symbol.iterator]을 null로 만들어주면 작동하지 않는다.
+여기에서도 역시 Symbol.iterator를 없애주면 작동하지 않는다.
 ```
 const arr = [1, 2, 3];
 arr[Symbol.iterator] = null;
 console.log([...arr, ...[4, 5]]) // arr is not iterable
 ```
-즉, 전개 연산자도 [Symbol.iterator]() 메소드를 실행해 next() 메소드의 값을 순서대로 return해주는 것을 알 수 있다.
+즉, 전개 연산자도 Symbol.iterator() 메소드를 실행해 next() 메소드의 값을 순서대로 return해주는 것을 알 수 있다.
