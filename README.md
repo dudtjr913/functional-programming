@@ -1,5 +1,7 @@
 # 함수형 프로그래밍과 ES6+ 예제 코드
 
+[함수형 프로그래밍과 JavaScript ES6+](https://www.inflearn.com/course/functional-es6/dashboard)를 학습하고 있습니다.
+
 ## 강의 목록
 1. 함수형 자바스크립트 기본기
     1. 평가와 일급
